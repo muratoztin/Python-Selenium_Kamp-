@@ -1,0 +1,60 @@
+ÖDEV TANIMI:
+
+Bir öğrenci kayıt sistemi yazdığımızı düşünelim. Sistemimizdeki öğrencileri bir listede sadece ad soyad olacak şekilde tutalım.
+
+Bu öğrenci kayıt sistemine;
+
+Aldığı isim soy isim ile listeye öğrenci ekleyen
+Aldığı isim soy isim ile eşleşen değeri listeden kaldıran
+Listeye birden fazla öğrenci eklemeyi mümkün kılan
+Listedeki tüm öğrencileri tek tek ekrana yazdıran
+Öğrencinin listedeki index numarası öğrenci numarası olarak kabul edildiğini düşünerek öğrencinin numarasını öğrenmeyi mümkün kılan
+Listeden birden fazla öğrenci silmeyi mümkün kılan (döngü kullanınız)
+fonksiyonları geliştiriniz ve her bir fonksiyonu en az bir kere çağırarak konsolda test ediniz.
+
+Ödevde kullanacağınız döngülerin bir tanesi for bir tanesi while döngüsü olması istenmektedir.
+
+
+
+
+
+ogrenci_listesi = []
+
+def ogrenci_ekle(ad, soyad):
+    ogrenci_listesi.append((ad, soyad))
+    print(f"{ad} {soyad} isimli öğrenci listeye eklendi.")
+
+def ogrenci_sil(ad, soyad):
+    for ogrenci in ogrenci_listesi[:]:  
+        if ogrenci[0] == ad and ogrenci[1] == soyad:
+            ogrenci_listesi.remove(ogrenci)
+            print(f"{ad} {soyad} isimli öğrenci listeden silindi.")
+
+def tum_ogrencileri_yazdir():
+  index = 0
+  while index < len(ogrenci_listesi):
+      ogrenci = ogrenci_listesi[index]
+      print(f"{index+1}. öğrenci: {ogrenci[0]} {ogrenci[1]}")
+      index += 1
+
+def ogrenci_numarasini_bul(ad, soyad):
+    for index, ogrenci in enumerate(ogrenci_listesi):
+        if ogrenci[0] == ad and ogrenci[1] == soyad:
+            print(f"{ad} {soyad} isimli öğrencinin numarası: {index+1}")
+
+# Örnek kullanım
+ogrenci_ekle("Murat", "Öztin")
+ogrenci_ekle("Ali", "Kara")
+ogrenci_ekle("Mehmet", "Nesin")
+
+tum_ogrencileri_yazdir()
+
+ogrenci_sil("Ali", "Kara")
+
+tum_ogrencileri_yazdir()
+
+ogrenci_numarasini_bul("Mehmet", "Nesin")
+
+
+
+
